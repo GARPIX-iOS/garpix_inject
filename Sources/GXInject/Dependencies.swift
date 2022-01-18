@@ -13,12 +13,12 @@ public class Dependencies {
     static private(set) var shared = Dependencies() // 1
     fileprivate var dependencies = [Dependency]() // 2
     
-    convenience init(@DependencyBuilder _ dependencies: () -> [Dependency]) {
+    public convenience init(@DependencyBuilder _ dependencies: () -> [Dependency]) {
         self.init()
         dependencies().forEach { register($0) }
     }
 
-    convenience init(@DependencyBuilder _ dependency: () -> Dependency) {
+    public convenience init(@DependencyBuilder _ dependency: () -> Dependency) {
         self.init()
         register(dependency())
     }
@@ -32,7 +32,7 @@ public class Dependencies {
         dependencies.append(dependency)
     }
 
-    func build() {
+    public func build() {
         // We assuming that at this point all needed dependencies are registered
         for index in dependencies.startIndex..<dependencies.endIndex {
             dependencies[index].resolve()

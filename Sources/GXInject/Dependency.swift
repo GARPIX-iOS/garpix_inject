@@ -27,7 +27,7 @@ public struct Dependency {
 }
 
 /// DSL билдер для регистрации зависимостей
-@resultBuilder struct DependencyBuilder {
+@resultBuilder public struct DependencyBuilder {
     static func buildBlock(_ dependency: Dependency) -> Dependency { dependency }
     static func buildBlock(_ dependencies: Dependency...) -> [Dependency] { dependencies }
     static func buildBlock(_ dependencies: [Dependency]...) -> [Dependency] { dependencies.reduce([], { $0 + $1 }) }
