@@ -1,6 +1,6 @@
 # GXInject
 
-## Просто обертка для не сложного DI.
+## Простая обертка для DI.
 
 # 🔷 Требования
 
@@ -55,7 +55,7 @@ extension AppDelegate {
 }
 ```
 
-2) В нужном месте соберите свои зависимости. Наприммер, так
+2) В нужном месте соберите свои зависимости. Например, так
 ```swift
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch. 
