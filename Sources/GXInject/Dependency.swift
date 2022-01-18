@@ -9,14 +9,14 @@ import Foundation
 
 /// Структура для хранения зависимости
 public struct Dependency {
-    typealias ResolveBlock<T> = () -> T
+    public typealias ResolveBlock<T> = () -> T
 
     /// Actual value will be assigned after resolve() call
     private(set) var value: Any!
     private let resolveBlock: ResolveBlock<Any>
     let name: String
 
-    init<T>(_ block: @escaping ResolveBlock<T>) {
+    public init<T>(_ block: @escaping ResolveBlock<T>) {
         /// Save block for future
         resolveBlock = block
         name = String(describing: T.self)
@@ -28,7 +28,7 @@ public struct Dependency {
 
 /// DSL билдер для регистрации зависимостей
 @resultBuilder public struct DependencyBuilder {
-    static func buildBlock(_ dependency: Dependency) -> Dependency { dependency }
-    static func buildBlock(_ dependencies: Dependency...) -> [Dependency] { dependencies }
-    static func buildBlock(_ dependencies: [Dependency]...) -> [Dependency] { dependencies.reduce([], { $0 + $1 }) }
+    static public func buildBlock(_ dependency: Dependency) -> Dependency { dependency }
+    static public func buildBlock(_ dependencies: Dependency...) -> [Dependency] { dependencies }
+    static public func buildBlock(_ dependencies: [Dependency]...) -> [Dependency] { dependencies.reduce([], { $0 + $1 }) }
 }
